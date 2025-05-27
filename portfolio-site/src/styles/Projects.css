@@ -1,0 +1,295 @@
+/* 모던한 Projects 섹션 */
+.projects {
+  padding: 8rem 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 배경 패턴 */
+.projects::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(255,255,255,0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(255,255,255,0.05) 0%, transparent 50%);
+  z-index: 0;
+}
+
+.projects .container {
+  position: relative;
+  z-index: 1;
+}
+
+.projects .section-header h2,
+.projects .section-subtitle {
+  color: white;
+}
+
+.projects .section-tag {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* 프로젝트 필터 버튼들 */
+.project-filters {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 3rem 0;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.filter-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.filter-btn.active {
+  background: rgba(255, 255, 255, 0.9);
+  color: #667eea;
+  border-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* 프로젝트 그리드 */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2.5rem; /* 카드 간 간격 */
+  margin: 3rem 0; /* 위아래 여백 추가 */
+  padding: 0 1rem; /* 그리드 자체에 좌우 여백 추가 */
+}
+
+/* 프로젝트 카드 */
+.project-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.project-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* 프로젝트 상태 배지 */
+.project-status {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.4rem 1rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  z-index: 3;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.project-status.completed {
+  background: linear-gradient(45deg, #00d4aa, #00c851);
+  color: white;
+}
+
+.project-status.in-progress {
+  background: linear-gradient(45deg, #ffbb33, #ff8800);
+  color: white;
+}
+
+/* 프로젝트 이미지 */
+.project-image {
+  height: 220px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+}
+
+.project-emoji {
+  font-size: 4rem;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.image-placeholder {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+  transition: all 0.3s ease;
+}
+
+/* 호버 오버레이 */
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(102, 126, 234, 0.85), rgba(118, 75, 162, 0.85)); /* 불투명도 약간 줄임 */
+  display: flex;
+  flex-direction: row; /* 가로 배치 유지 */
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  opacity: 0;
+  visibility: hidden; /* 완전히 숨김으로 클릭 방해 방지 */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* 더 부드러운 전환 */
+  backdrop-filter: blur(3px); /* 블러 효과 줄임 */
+  padding: 1rem;
+  z-index: 10; /* z-index 명시 */
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+  visibility: visible; /* 호버시에만 클릭 가능하게 */
+}
+
+.overlay-btn {
+  background: rgba(255, 255, 255, 0.95); /* 배경 더 명확하게 */
+  backdrop-filter: blur(10px);
+  color: #333;
+  padding: 1rem 1.8rem; /* 클릭하기 쉽게 패딩 증가 */
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid rgba(255, 255, 255, 0.5); /* 테두리 강화 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-width: 130px; /* 클릭 영역 확보 */
+  min-height: 44px; /* 터치하기 쉬운 최소 높이 */
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* 그림자 강화 */
+  white-space: nowrap;
+  cursor: pointer; /* 커서 명시 */
+  position: relative; /* 클릭 이벤트 확실히 받기 위해 */
+  z-index: 11; /* 부모보다 높은 z-index */
+}
+
+.overlay-btn:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-4px) scale(1.05); /* 호버 효과 강화 */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  color: #667eea;
+  border-color: rgba(102, 126, 234, 0.3);
+}
+
+/* 버튼 활성화 상태 */
+.overlay-btn:active {
+  transform: translateY(-2px) scale(1.02);
+  transition-duration: 0.1s;
+}
+
+.overlay-btn span {
+  font-size: 1.1rem; /* 아이콘 크기 조정 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px; /* 아이콘 최소 너비 */
+}
+
+/* 프로젝트 정보 */
+.project-info {
+  padding: 2rem;
+  color: white;
+}
+
+.project-info h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.project-info p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+
+/* 기술 스택 태그들 */
+.technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.tech-tag {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.tech-tag:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .projects {
+    padding: 6rem 0;
+  }
+  
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 0 0.5rem; /* 모바일에서 최소 여백 */
+    margin: 2rem 0;
+  }
+  
+  .project-filters {
+    gap: 0.5rem;
+  }
+  
+  .filter-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.8rem;
+  }
+  
+  .project-info {
+    padding: 1.5rem;
+  }
+  
+  .overlay-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}

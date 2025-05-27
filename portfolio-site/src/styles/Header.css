@@ -1,0 +1,516 @@
+/* 모던한 헤더 스타일 */
+.header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 모던한 네비게이션 바 - 여백 대폭 증가 */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 4rem; /* 좌우 패딩 대폭 증가 */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1000;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 스크롤시 네비게이션 스타일 변경 */
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  padding: 1rem 4rem; /* 스크롤시에도 같은 패딩 유지 */
+}
+
+.navbar.scrolled .nav-links a {
+  color: #333;
+}
+
+/* 브랜드 로고 - 더 자연스러운 그라데이션 */
+.nav-brand h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(45deg, #fff, #f0f0f0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: all 0.5s ease; /* 전환 시간 증가 */
+}
+
+/* 스크롤시 브랜드 로고 - 자연스러운 그라데이션 애니메이션 */
+.navbar.scrolled .nav-brand h2 {
+  background: linear-gradient(
+    45deg, 
+    #667eea 0%, 
+    #764ba2 25%, 
+    #f093fb 50%, 
+    #667eea 75%, 
+    #764ba2 100%
+  );
+  background-size: 300% 100%; /* 배경 크기를 크게 해서 부드러운 이동 */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: smoothGradientFlow 4s ease-in-out infinite; /* 더 부드러운 애니메이션 */
+}
+
+/* 부드러운 그라데이션 흐름 애니메이션 */
+@keyframes smoothGradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 50% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  75% {
+    background-position: 50% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* 햄버거 메뉴 (모바일용) */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-right: 2rem; /* 모바일에서도 오른쪽 여백 증가 */
+}
+
+.mobile-menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: white;
+  margin: 3px 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* 더 부드러운 전환 */
+  transform-origin: center;
+}
+
+/* 햄버거 메뉴 애니메이션 */
+.mobile-menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* 네비게이션 링크들 - 오른쪽 여백 대폭 증가 */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2.5rem; /* 링크 간 간격도 증가 */
+  margin: 0;
+  padding: 0;
+  margin-right: 3rem; /* 오른쪽 여백 대폭 증가 */
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1.2rem; /* 패딩도 증가 */
+  border-radius: 8px;
+}
+
+.nav-links a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(45deg, #fff, #f0f0f0);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* 더 부드러운 전환 */
+  transform: translateX(-50%);
+}
+
+.nav-links a:hover::after {
+  width: 80%;
+}
+
+/* 스크롤시 링크 효과도 부드럽게 */
+.navbar.scrolled .nav-links a::after {
+  background: linear-gradient(45deg, #667eea, #764ba2, #f093fb);
+  background-size: 200% 100%;
+  animation: linkGradientFlow 2s ease-in-out infinite;
+}
+
+@keyframes linkGradientFlow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.navbar.scrolled .nav-links a:hover {
+  background: rgba(102, 126, 234, 0.1);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2); /* 부드러운 그림자 추가 */
+}
+
+/* 모던한 히어로 섹션 */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  padding: 2rem;
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.hero-text h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.greeting {
+  color: #fff;
+  font-size: 0.6em;
+  opacity: 0.9;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.name {
+  background: linear-gradient(45deg, #fff, #f0f0f0, #fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.highlight {
+  background: linear-gradient(45deg, #d0ffd4, #eff983);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.role {
+  font-size: 0.5em;
+  color: #fff;
+  opacity: 0.8;
+  font-weight: 700;
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.hero-description {
+  color: #c9c9c9;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+  opacity: 0.9;
+  animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 2rem; /* 갭을 2rem으로 설정 */
+  animation: fadeInUp 0.8s ease-out 0.8s both;
+  justify-content: center; /* 가로 센터 정렬 */
+  align-items: center; /* 세로 센터 정렬 */
+  width: 100%; /* 전체 너비 사용 */
+}
+
+.cta-primary, .cta-secondary {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-primary {
+  background: linear-gradient(45deg, #fff, #f8f8f8);
+  color: #667eea;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+}
+
+.cta-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.cta-primary:hover, .cta-secondary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* 모던한 비주얼 영역 */
+.hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.floating-shapes {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: float 6s ease-in-out infinite;
+}
+
+.shape-1 {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(45deg, #51ffe2, #4457ff);
+  top: 10%;
+  right: 10%;
+  animation-delay: 0s;
+}
+
+.shape-2 {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(45deg, #f4ff5e, #000000);
+  bottom: 20%;
+  left: 10%;
+  animation-delay: 2s;
+}
+
+.shape-3 {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(45deg, #ff9ff3, #f368e0);
+  top: 60%;
+  right: 30%;
+  animation-delay: 4s;
+}
+
+.hero-avatar {
+  position: relative;
+  z-index: 2;
+}
+
+.avatar-placeholder {
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 6rem;
+  backdrop-filter: blur(20px);
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  animation: pulse 3s ease-in-out infinite;
+}
+
+/* 스크롤 인디케이터 */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: bounce 2s infinite;
+}
+
+.scroll-arrow {
+  width: 2px;
+  height: 30px;
+  background: white;
+  position: relative;
+}
+
+.scroll-arrow::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -5px;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+  transform: rotate(45deg);
+}
+
+/* 애니메이션 키프레임 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+  40% { transform: translateX(-50%) translateY(-10px); }
+  60% { transform: translateX(-50%) translateY(-5px); }
+}
+
+/* 반응형 디자인 - 여백 조정 */
+@media (max-width: 1200px) {
+  .navbar {
+    padding: 1rem 2.5rem; /* 중간 크기 화면에서 패딩 조정 */
+  }
+  
+  .navbar.scrolled {
+    padding: 1rem 2.5rem;
+  }
+  
+  .nav-links {
+    gap: 2rem;
+    margin-right: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 2rem; /* 태블릿에서 패딩 조정 */
+  }
+  
+  .navbar.scrolled {
+    padding: 1rem 2rem;
+  }
+  
+  .mobile-menu-toggle {
+    display: flex;
+    margin-right: 3rem;
+  }
+  
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    right: -100%;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: rgba(102, 126, 234, 0.95);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 2rem;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* 더 부드러운 슬라이드 */
+    margin-right: 3rem;
+  }
+  
+  .nav-links.active {
+    right: 0;
+  }
+  
+  .nav-links a {
+    padding: 1.2rem;
+    margin: 0.5rem 0;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 1.1rem;
+  }
+  
+  .hero-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 2rem;
+  }
+  
+  .hero-buttons {
+    flex-direction: column; /* 모바일에서는 세로 배치 */
+    align-items: center; /* 센터 정렬 유지 */
+    gap: 1.5rem; /* 모바일에서는 갭을 조금 줄임 */
+    width: 100%;
+  }
+  
+  .cta-primary, .cta-secondary {
+    width: 100%;
+    max-width: 250px; /* 최대 너비 제한 */
+  }
+  
+  .avatar-placeholder {
+    width: 250px;
+    height: 250px;
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 1rem 1.5rem; /* 작은 화면에서도 충분한 여백 */
+  }
+  
+  .navbar.scrolled {
+    padding: 1rem 1.5rem;
+  }
+  
+  .nav-brand h2 {
+    font-size: 1.3rem;
+  }
+  
+  .mobile-menu-toggle {
+    margin-right: 0.8rem;
+  }
+  
+  .hero h1 {
+    font-size: 2rem;
+  }
+}
