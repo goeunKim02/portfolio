@@ -16,6 +16,17 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // 프로젝트 섹션으로 스크롤하는 함수 추가
+  const scrollToProjects = () => {
+    const projectsSection = document.getElementById('projects');
+    if (projectsSection) {
+      projectsSection.scrollIntoView({ 
+        behavior: 'smooth', // 부드러운 스크롤 애니메이션
+        block: 'start' // 섹션 시작 부분으로 스크롤
+      });
+    }
+  };
+
   return (
     <header className="header">
       {/* 스크롤 상태에 따라 네비게이션 스타일 변경 */}
@@ -24,9 +35,9 @@ const Header = () => {
           <h2>Portfolio</h2>
         </div>
         
-        {/* 햄버거 메뉴 버튼 (모바일용) */}
+        {/* 햄버거 메뉴 버튼 (모바일용) - 활성 상태 클래스 추가 */}
         <button 
-          className="mobile-menu-toggle"
+          className={`mobile-menu-toggle ${isMobileMenuOpen ? 'active' : ''}`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -58,8 +69,11 @@ const Header = () => {
               문제를 해결하고 센스 있는 개발을 하기 위해 노력합니다다.
             </p>
             <div className="hero-buttons">
-              <button className="cta-primary">프로젝트 보기</button>
-              <button className="cta-secondary">이력서 다운로드</button>
+              {/* 프로젝트 보기 버튼에 클릭 이벤트 추가 */}
+              <button className="cta-primary" onClick={scrollToProjects}>
+                프로젝트 보기
+              </button>
+              {/* 이력서 다운로드 버튼 제거 */}
             </div>
           </div>
           

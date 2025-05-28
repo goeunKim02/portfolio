@@ -8,25 +8,19 @@ const About = () => {
         <div className="section-header">
           <span className="section-tag">About Me</span>
           <h2>저를 소개합니다</h2>
-          <p className="section-subtitle">
-            열정적이고 창의적인 개발자로서의 여정을 소개합니다
-          </p>
         </div>
         
         <div className="about-content">
-          {/* 개선된 프로필 영역 */}
           <div className="about-image">
             <div className="image-container">
               <div className="image-placeholder">
                 <span>📸</span>
               </div>
-              {/* 장식용 요소들 추가 */}
               <div className="decoration decoration-1"></div>
               <div className="decoration decoration-2"></div>
             </div>
           </div>
           
-          {/* 더 구조화된 소개 텍스트 */}
           <div className="about-text">
             <div className="intro-card">
               <h3>🚀 개발자로서의 여정</h3>
@@ -65,7 +59,7 @@ const About = () => {
               </div>
               <div className="value-item">
                 <span className="value-icon">🔄</span>
-                <span className="value-text">지속적 학습</span>
+                <span className="value-text">지속적 도전</span>
               </div>
             </div>
           </div>
