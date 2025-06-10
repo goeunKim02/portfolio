@@ -8,28 +8,28 @@ const Skills = () => {
       category: "Frontend",
       icon: "🎨",
       skills: [
-        { name: "React", level: 90, color: "#61DAFB" },
-        { name: "Kotlin", level: 80, color: "#3178C6" },
-        { name: "JavaScript", level: 80, color: "#000000" },
-        { name: "Vue.js", level: 75, color: "#4FC08D" },
-        { name: "Pyqt5", level: 70, color: "#06B6D4" }
+        { name: "React", level: 60, color: "#61DAFB" },
+        { name: "Kotlin", level: 40, color: "#3178C6" },
+        { name: "JavaScript", level: 40, color: "#000000" },
+        { name: "Vue.js", level: 40, color: "#4FC08D" },
+        { name: "Pyqt5", level: 30, color: "#06B6D4" }
       ]
     },
     {
       category: "Backend",
       icon: "⚙️",
       skills: [
-        { name: "Python", level: 80, color: "#339933" },
-        { name: "Django", level: 75, color: "#000000" },
+        { name: "Python", level: 50, color: "#339933" },
+        { name: "Django", level: 40, color: "#000000" },
       ]
     },
     {
       category: "Tools & Others",
       icon: "🛠️",
       skills: [
-        { name: "Figma", level: 95, color: "#F24E1E" },
-        { name: "Jira", level: 95, color: "#C21325" },
-        { name: "Git", level: 90, color: "#F05032" },
+        { name: "Figma", level: 80, color: "#F24E1E" },
+        { name: "Jira", level: 80, color: "#C21325" },
+        { name: "Git", level: 80, color: "#F05032" },
       ]
     }
   ];
